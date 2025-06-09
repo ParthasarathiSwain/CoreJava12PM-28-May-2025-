@@ -24,7 +24,7 @@ class  Array02{
 			sum+=x[index];
 		}
 		
-		System.out.println("Sum is : "+sum);
+		System.out.println("Sum is : "+sum); 
 
 		System.out.println("----------------------------");
 		int count=0;
