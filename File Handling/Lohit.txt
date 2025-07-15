@@ -1,1 +1,10 @@
-Bye
+Lion
+Elephant
+Tiger
+Giraffe
+Zebra
+Kangaroo
+Panda
+Monkey
+Dolphin
+Eagle
