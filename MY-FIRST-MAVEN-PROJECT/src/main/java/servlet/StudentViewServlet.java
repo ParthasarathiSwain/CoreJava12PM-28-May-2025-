@@ -33,6 +33,8 @@ public class StudentViewServlet extends HttpServlet {
 		pw.print("<th>EMAIL</th>");
 		pw.print("<th>PASS</th>");
 		pw.print("<th>Address</th>");
+		pw.print("<th>EDIT</th>");
+		pw.print("<th>DELETE</th>");
 		pw.print("</tr>");
 
 		for (Student student : stdList) {
@@ -42,6 +44,8 @@ public class StudentViewServlet extends HttpServlet {
 			pw.print("<td>"+student.getEmail()+"</td>");
 			pw.print("<td>"+student.getPass()+"</td>");
 			pw.print("<td>"+student.getAdd()+"</td>");
+			pw.print("<td  style='background-color:grey;'><a href=''  >edit</a></td>");
+			pw.print("<td  style='background-color:red;'><a href='' >delete</a></td>");
 			pw.print("</tr>");
 		}
 		
