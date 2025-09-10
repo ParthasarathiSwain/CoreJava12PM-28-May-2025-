@@ -45,7 +45,7 @@ public class StudentViewServlet extends HttpServlet {
 			pw.print("<td>"+student.getPass()+"</td>");
 			pw.print("<td>"+student.getAdd()+"</td>");
 			pw.print("<td  style='background-color:grey;'><a href=''  >edit</a></td>");
-			pw.print("<td  style='background-color:red;'><a href='' >delete</a></td>");
+			pw.print("<td  style='background-color:red;'><a href='DeleteServlet?id="+student.getId()+"' >delete</a></td>");
 			pw.print("</tr>");
 		}
 		

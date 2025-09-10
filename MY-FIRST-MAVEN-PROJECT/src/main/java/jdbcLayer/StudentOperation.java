@@ -50,4 +50,29 @@ public class StudentOperation {
 		return stdList;
 		
 	}
+	
+	//delete Student
+	public int deleteStudent(int id) {
+		int status=0;
+		try {
+			Connection con=Dbconnection.getCon();
+			String query="delete from student where stdid=?";
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setInt(1, id);
+			status=ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
 }
+
+
+
+
+
+
+
+
+
+
