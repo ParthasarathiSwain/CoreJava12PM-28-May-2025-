@@ -2,6 +2,10 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import dao.CustomerDao;
 import entity.Customer;
@@ -49,6 +53,14 @@ public class CustomerServlet extends HttpServlet {
 			CustomerDao cd=new CustomerDao();
 			int status=cd.addCustomer(cust);
 			pw.print((status==1)?"yes":"no");
+		}
+		else if(secret.equals("getAllCustomer")) {
+			CustomerDao cd=new CustomerDao();
+			List<Customer> listCust=cd.getAllCustomer();
+			Gson gson = new GsonBuilder().create();
+	        String json = gson.toJson(listCust);
+	        pw.print(json);
+	        
 		}
 	}
 

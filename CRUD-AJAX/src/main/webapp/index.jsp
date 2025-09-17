@@ -73,24 +73,15 @@
 					      <th scope="col">Name</th>
 					      <th scope="col">Email</th>
 					      <th scope="col">Phone</th>
+					       <th scope="col">Gender</th>
 					      <th scope="col">Dob</th>
 					      <th scope="col">Address</th>
 					      <th scope="col">Edit</th>
 					      <th scope="col">Delete</th>
 					    </tr>
 					  </thead>
-					  <tbody>
-					    <tr>
-					      <th scope="row">1</th>
-					      <td>Mark</td>
-					      <td>Otto</td>
-					      <td>@mdo</td>
-					      <td>Mark</td>
-					      <td>Otto</td>
-					      <td>@mdo</td>
-					      <td>Otto</td>
-					    </tr>
-					    
+					  <tbody  id="myAllData">
+					   
 					  </tbody>
 					</table>
     		</div>
@@ -105,7 +96,13 @@
  	
  	<script>
  		$(document).ready(function(){
-			/* alert("Welcome"); */
+ 			addCustomer();
+ 			getAllCustomer();
+ 			
+ 		})
+ 		
+ 		function addCustomer(){
+
 			$("#myForm").on("submit",function(event){
 				event.preventDefault();//stop default form submit
 				var formdata=$(this).serialize();//collect form data
@@ -127,7 +124,39 @@
 					}
 				})
 			})
- 		})
+ 		}
+ 		
+ 		function getAllCustomer(){
+				$.ajax({
+					url : "CustomerServlet",
+					type: "Post",
+					data: {"secret":"getAllCustomer"},
+					dataType: "json",
+					success:function(response){
+						let s="";
+						for(var key in response){
+							if(response.hasOwnProperty(key)){
+								s+="<tr>";
+								s+="<td>"+response[key].custId+"</td>";
+								s+="<td>"+response[key].custName+"</td>";
+								s+="<td>"+response[key].custEmail+"</td>";
+								s+="<td>"+response[key].custGen+"</td>";
+								s+="<td>"+response[key].custPhone+"</td>";
+								s+="<td>"+response[key].custDob+"</td>";
+								s+="<td>"+response[key].custAdd+"</td>";
+								s+="<td><a class='btn btn-primary'>edit</a></td>";
+								s+="<td><a class='btn btn-danger'>delete</a></td>";
+								s+="</tr>";
+							}
+						}
+						$("#myAllData").html(s);
+					},
+					error:function(){
+						console.log("Something went to wrong on server!");
+					},
+				})
+ 		}
+ 		
  	</script>
  	
   </body>
