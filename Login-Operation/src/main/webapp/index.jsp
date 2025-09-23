@@ -21,10 +21,10 @@
 							    
 							   		<form id="loginForm">
 							   			<label class="form-label">Email</label>
-							   			<input type="email" class="form-control">
+							   			<input type="email" name="email" class="form-control" required>
 							   			
 							   			<label class="form-label">Password</label>
-							   			<input type="email" class="form-control">
+							   			<input type="password" name="pass" class="form-control" required>
 							   			
 							   			<div class=" d-flex justify-content-center">
 							   				 <input type="submit" Value="Login Here" class="btn btn-primary mt-3" >
@@ -51,11 +51,25 @@
 					event.preventDefault();//stop default form submit
 					var formdata=$(this).serialize();//collect form data
 					$.ajax({
-						url : "",
+						url : "LoginServlet",
 						type: "Post",
 						data: formdata,
 						success:function(response){
-							
+							if(response.trim()=="CUST"){
+								alert("Login Successfull!");
+								window.location.href="customer.jsp";
+							}
+							else if(response.trim()=="SELLER"){
+								alert("Login Successfull!");
+								window.location.href="seller.jsp";
+							}
+							else if(response.trim()=="ADMIN"){
+								alert("Login Successfull!");
+								window.location.href="admin.jsp";
+							}
+							else{
+								alert("Login Failed!");
+							}
 							$("#loginForm")[0].reset();
 						},
 						error:function(){
