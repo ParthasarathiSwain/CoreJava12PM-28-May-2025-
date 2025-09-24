@@ -31,6 +31,11 @@
 							   			</div>
 							   		</form>
 							   		
+							   		<div class="row">
+							   			<form action="CheckingRedirect" method="get">
+							   				<input type="submit" value="Checking">
+							   			</form>
+							   		</div>
 							  </div>
 							</div>
 						</div>
