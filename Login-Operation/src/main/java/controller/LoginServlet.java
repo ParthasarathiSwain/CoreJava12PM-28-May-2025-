@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -32,6 +33,9 @@ public class LoginServlet extends HttpServlet {
 		int status=ld.checkUserExist(email,pass);
 
 		if(status>0) {
+			HttpSession session=request.getSession();
+			session.setAttribute("uEmail", email);
+					
 			User user=ld.getUserDetails(email,pass);
 			String role=user.getRole();
 			if(role.equals("CUST")) {
