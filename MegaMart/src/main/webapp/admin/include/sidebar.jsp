@@ -1,4 +1,4 @@
-<!--start sidebar -->
+
         <aside class="sidebar-wrapper" data-simplebar="true">
           <div class="sidebar-header">
             <div>
@@ -38,7 +38,7 @@
             </li>
             
             <li>
-              <a href="javascript:;" class="has-arrow">
+              <a href="#" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-grid"></i>
                 </div>
                 <div class="menu-title">Company</div>
@@ -49,6 +49,24 @@
                 </li>
                 <li> 
                 	<a href="viewCompany.jsp"><i class="bi bi-arrow-right-short"></i>View Company</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+             <li>
+              <a href="#" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-grid"></i>
+                </div>
+                <div class="menu-title">Products</div>
+              </a>
+              <ul>
+                <li> 
+                	<a href="addProduct.jsp"><i class="bi bi-arrow-right-short"></i>Add Product</a>
+                </li>
+                <li> 
+                	<a href="viewProduct.jsp"><i class="bi bi-arrow-right-short"></i>View Products</a>
                 </li>
                 
               </ul>

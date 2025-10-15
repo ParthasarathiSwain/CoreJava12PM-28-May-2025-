@@ -1,3 +1,6 @@
+
+<%@ page import="java.sql.*"  %>
+<%@ page import="util.Dbconnection"  %>
 <!doctype html>
 <html lang="en" class="minimal-theme">
 
@@ -25,13 +28,13 @@
           <main class="page-content">
             <!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Company</div>
+					<div class="breadcrumb-title pe-3">Product</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Add Company</li>
+								<li class="breadcrumb-item active" aria-current="page">Add Product</li>
 							</ol>
 						</nav>
 					</div>
@@ -51,15 +54,51 @@
 				<!--end breadcrumb-->
             	<div class="row">
 					<div class="col-xl-9 mx-auto">
-						<h6 class="mb-0 text-uppercase">Add Company</h6>
+						<h6 class="mb-0 text-uppercase">Add Product</h6>
 						<hr/>
 						<div class="card">
 							<div class="card-body">
 							
-							 <form  id="Comform">
-							 	<input class="form-control form-control-lg mb-3" type="text" name="comName"  placeholder="Company Name" aria-label=".form-control-lg example" required>
-							 	<input type="hidden" name="secret" value="addCompany">
-								<input class="form-control btn btn-primary" type="submit" value="Add Company">
+							 <form  id="myForm">
+							 	<input type="text" name="pName" class="form-control form-control-lg mb-3"   placeholder="Product Name" aria-label=".form-control-lg example" required>
+								<input type="text" name="pDesc" class="form-control form-control-lg mb-3"   placeholder="Product Description" aria-label=".form-control-lg example" required>
+								<input type="number" name="qty" class="form-control form-control-lg mb-3"   placeholder="Product Quantity" aria-label=".form-control-lg example" required>
+								<input type="number" name="price" class="form-control form-control-lg mb-3"   placeholder="Product Price" aria-label=".form-control-lg example" required>
+								
+								<select name="catId"  class="form-control form-control-lg mb-3">
+									<option>--SELECT CATEGORY--</option>
+									<%
+									  Connection con1=Dbconnection.getCon();
+									  String query1="select catId,catName from category";
+									  PreparedStatement ps1= con1.prepareStatement(query1);
+									  ResultSet rs1=ps1.executeQuery();
+									  while(rs1.next()){
+									%>
+										<option  value="<%= rs1.getInt(1) %>"><%= rs1.getString(2) %></option>
+									<%
+									  }
+									%>
+								</select>
+								
+								<select name="comId"  class="form-control form-control-lg mb-3">
+									<option>--SELECT COMPANY--</option>
+									<%
+									  Connection con2=Dbconnection.getCon();
+									  String query2="select comId,comName from company";
+									  PreparedStatement ps2= con2.prepareStatement(query2);
+									  ResultSet rs2=ps2.executeQuery();
+									  while(rs2.next()){
+									%>
+										<option  value="<%= rs2.getInt(1) %>"><%= rs2.getString(2) %></option>
+									<%
+									  }
+									%>
+								</select>
+								<input type="file" name="pImg" class="form-control form-control-lg mb-3"   aria-label=".form-control-lg example" required>
+								
+								<input type="hidden" name="secret" value="addProduct">
+								
+								<input class="form-control btn btn-primary" type="submit" value="Add Product">
 							 </form>
 								
 							</div>
@@ -150,19 +189,21 @@
 
 	<script>
 	$(document).ready(function(){
-		$("#Comform").on("submit",function(event){
+		$("#myForm").on("submit",function(event){
 			event.preventDefault();//stop default form submit
-			var formdata=$(this).serialize();//collect form data
+			var formdata=new FormData(this);//collect form data
 			
 			$.ajax({
-				url : "../CompanyServlet",
+				url : "../ProductServlet",
 				type: "Post",
 				data: formdata,
+				contentType: false,
+                processData: false,
 				success:function(response){
 					if(response.trim()=="Yes"){
 						$.toast({
-						    text: "Company Added Successfully!", 
-						    heading: 'Company', 
+						    text: "Product Added Successfully!", 
+						    heading: 'Product', 
 						    icon: 'success', 
 						    showHideTransition: 'fade', 
 						    allowToastClose: true, 
@@ -176,8 +217,8 @@
 						
 					}else{
 						$.toast({
-						    text: "Company Added Failed!", 
-						    heading: 'Company', 
+						    text: "Product Added Failed!", 
+						    heading: 'Product', 
 						    icon: 'error', 
 						    showHideTransition: 'fade', 
 						    allowToastClose: true, 
@@ -189,7 +230,7 @@
 						    loaderBg: '#9EC600',     
 						});
 					}
-					$("#Comform")[0].reset();
+					$("#myForm")[0].reset();
 				},
 				error:function(){
 					console.log("Something went wrong on Server!")
@@ -199,6 +240,7 @@
 			
 	})
 	</script>
+	
 </body>
 
 </html>

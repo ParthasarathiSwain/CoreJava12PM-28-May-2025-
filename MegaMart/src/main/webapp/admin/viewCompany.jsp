@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <%@ include file="include/link.jsp" %>
-
-  <title>MegaMart</title>
+  <title>Mega Mart</title>
 </head>
 
 <body>
@@ -16,22 +15,23 @@
 
   <!--start wrapper-->
   <div class="wrapper">
-  		
-  		<%@ include file="include/header.jsp" %>
-
-        <%@ include file="include/sidebar.jsp" %>
+    
+    <%@ include file="include/header.jsp" %>
+    <%@ include file="include/sidebar.jsp" %>
+        
 
        <!--start content-->
           <main class="page-content">
-            <!--breadcrumb-->
+              
+           <!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Category</div>
+					<div class="breadcrumb-title pe-3">Company</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">View Category</li>
+								<li class="breadcrumb-item active" aria-current="page">View Company</li>
 							</ol>
 						</nav>
 					</div>
@@ -40,7 +40,8 @@
 							<button type="button" class="btn btn-primary">Settings</button>
 							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
 							</button>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	
+								<a class="dropdown-item" href="javascript:;">Action</a>
 								<a class="dropdown-item" href="javascript:;">Another action</a>
 								<a class="dropdown-item" href="javascript:;">Something else here</a>
 								<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
@@ -49,16 +50,17 @@
 					</div>
 				</div>
 				<!--end breadcrumb-->
-            	<div class="card">
+				 <div class="card">
                  <div class="card-body">
                    <div class="d-flex align-items-center">
-                      <h5 class="mb-0">Category Details</h5>
+                      <h5 class="mb-0">Company Details</h5>
                        <form class="ms-auto position-relative">
                          <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
                          <input class="form-control ps-5" type="text" placeholder="search">
                        </form>
                    </div>
-                   <div class="table-responsive mt-3">
+                   
+                    <div class="table-responsive mt-3">
                      <table class="table align-middle">
                        <thead class="table-secondary">
                          <tr>
@@ -71,15 +73,12 @@
                          
                          
                          
-                         
-                         
-                         </tbody>
+                       </tbody>
                      </table>
                    </div>
-                   
-           	     </div>
-               </div>
-		</main>
+				</div>
+			</div>
+          </main>
        <!--end page main-->
 
        <!--start overlay-->
@@ -156,195 +155,191 @@
 
   </div>
   <!--end wrapper-->
-
-
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body">
-		       			<div class="container">
-		       				<form  id="Catform">
-							 	<input class="form-control form-control-lg mb-3" type="text" name="catName" id="catName"  >
-							 	<input type="hidden" name="secret" value="updateCategory">
-							 	<input type="hidden" name="id" id="catId">
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Edit Company</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        <div class="container">
+			        	<form id="Comform">
+								<input class="form-control form-control-lg mb-3" type="text" name="comName" id="comName">
+								<input type="hidden" name="secret" value="updateCompany">
+								<input type="hidden" name="id" id="comId">
 								<input class="form-control btn btn-primary" type="submit" value="Edit & Save">
-							 </form>
-		       			</div>
-		      </div>
-		      
-		    </div>
-		  </div>
-		</div>
-   <!--  modal end -->
-
-  <%@ include file="include/script.jsp" %>
-
-
-	<script>
-		$(document).ready(function(){
-			getData();
-			
-		})
+							</form>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+			</div>
+    <!-- Modal end -->
+	
+  	<%@ include file="include/script.jsp" %>
+  	
+  	<script>
+  	$(document).ready(function(){
+		getData();
 		
-		function getData(){
+	})
+	
+	function getData(){
+  		$.ajax({
+  				url:"../CompanyServlet",
+  				type:"Post",
+  				data:{"secret":"getAllCompany"},
+  				dataType:"json",
+  				success:function(response){
+  					let s="";
+  					for(var key in response){
+  						if(response.hasOwnProperty(key)){
+  							s+="<tr>";
+  							s+="<td>"+response[key].comId+"</td>";
+  							s+="<td> <div class='d-flex align-items-center gap-3 cursor-pointer'> <div >";
+  	                        s+="<p class='mb-0'>"+response[key].comName+"</p> </div> </div> </td>";
+  	                        
+  	                        s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";
+  	                        s+="<a  class='text-warning comEdit'id='"+response[key].comId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
+  	                        s+="<a  class='text-danger comDelete'id='"+response[key].comId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
+  	                        s+="</div></td>";
+  							s+="</tr>";
+  						}
+  							
+  					}
+  					$("#myData").html(s);
+  				},
+  				error:function(){
+  					console.log("Something went to wrong on server");
+  				},
+  		})
+  	}
+  	
+	
+  	$(document).on('click','.comDelete',function(){
+		var comId=$(this).attr('id');
+		if(confirm("Are you sure you want to delete this ?")){
 			$.ajax({
-				url : "../CategoryServlet",
-				type: "Post",
-				data: {"secret":"getAllCategory"},
-				dataType: "json",
-				success:function(response){
-					let s="";
-					for(var key in response){
-						if(response.hasOwnProperty(key)){
-							s+="<tr>";
-							s+="<td>"+response[key].catId+"</td>";
-							s+="<td> <div class='d-flex align-items-center gap-3 cursor-pointer'> <div >";
-                            s+=" <p class='mb-0'>"+response[key].catName+"</p>  </div> </div> </td>";
-                             
-                            s+=" <td> <div class='table-actions d-flex align-items-center gap-3 fs-6'>";
-                            s+=" <a  class='text-warning catEdit' id='"+response[key].catId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";    
-                            s+=" <a  class='text-danger catDelete' id='"+response[key].catId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
-                            s+="</div> </td>";
-                          
-							s+="</tr>";
-						}
-					}
-					$("#myData").html(s);
-				},
-				error:function(){
-					console.log("Something went to wrong on server!");
-				},
-			})
-		}
-		
-		
-		
-		$(document).on('click','.catDelete',function(){
-			var catId=$(this).attr('id');
-			
-			if(confirm("Are You Sure You Want Delete This ?")){
-				$.ajax({
-					url : "../CategoryServlet",
-					type: "Post",
-					data: {"secret":"deleteCategory","id":catId},
-					success:function(response){
-						if(response.trim()=="Yes"){
-							$.toast({
-							    text: "Category Deleted Successfully!", 
-							    heading: 'Category', 
-							    icon: 'success', 
-							    showHideTransition: 'fade', 
-							    allowToastClose: true, 
-							    hideAfter: 5000, 
-							    stack: 5, 
-							    position: 'top-center',     
-							    textAlign: 'left', 
-							    loader: true, 
-							    loaderBg: '#9EC600',     
-							});
-							getData();
-						}else{
-							$.toast({
-							    text: "Category Deleted Failed!", 
-							    heading: 'Category', 
-							    icon: 'error', 
-							    showHideTransition: 'fade', 
-							    allowToastClose: true, 
-							    hideAfter: 5000, 
-							    stack: 5, 
-							    position: 'top-center',     
-							    textAlign: 'left', 
-							    loader: true, 
-							    loaderBg: '#9EC600',     
-							});
-						}
-					},
-					error:function(){
-						console.log("Something went to wrong on server!");
-					}
-				})
-			
-			}
-			
-		});
-		
-		
-		
-		
-		$(document).on('click','.catEdit',function(){
-			var catId=$(this).attr('id');
-			$("#exampleModal").modal("show");
-			
-			$.ajax({
-				url : "../CategoryServlet",
-				type: "Post",
-				data: {"secret":"getDataById","id":catId},
-				dataType: "json",
-				success:function(response){
-					 $("#catId").val(response.catId);
-					 $("#catName").val(response.catName);
-					
-				},
-				error:function(){
-					console.log("Something went to wrong on server!");
-				}
-			})
-		});
-		
-		$("#Catform").on("submit",function(event){
-			event.preventDefault();//stop default form submit
-			var formdata=$(this).serialize();//collect form data
-			
-			$.ajax({
-				url : "../CategoryServlet",
-				type: "Post",
-				data: formdata,
+				url:"../CompanyServlet",
+				type:"Post",
+				data:{"secret":"deleteCompany","id":comId},
+				
 				success:function(response){
 					if(response.trim()=="Yes"){
 						$.toast({
-						    text: "Category Updated Successfully!", 
-						    heading: 'Category', 
+						    text: "Company Deleted Successfully",     
+						    heading: 'Company', 
 						    icon: 'success', 
 						    showHideTransition: 'fade', 
-						    allowToastClose: true, 
-						    hideAfter: 5000, 
+						    allowToastClose: true,
+						    hideAfter: 5000,    
 						    stack: 5, 
 						    position: 'top-center',     
-						    textAlign: 'left', 
-						    loader: true, 
-						    loaderBg: '#9EC600',     
+						    textAlign: 'left',  
+						    loader: true,  
+						    loaderBg: '#9EC600',   
 						});
 						getData();
-						
 					}else{
 						$.toast({
-						    text: "Category Updated Failed!", 
-						    heading: 'Category', 
+						    text: "Company Deleted failed",     
+						    heading: 'Company', 
 						    icon: 'error', 
 						    showHideTransition: 'fade', 
-						    allowToastClose: true, 
-						    hideAfter: 5000, 
+						    allowToastClose: true,
+						    hideAfter: 5000,    
 						    stack: 5, 
 						    position: 'top-center',     
-						    textAlign: 'left', 
-						    loader: true, 
-						    loaderBg: '#9EC600',     
+						    textAlign: 'left',  
+						    loader: true,  
+						    loaderBg: '#9EC600',   
 						});
+					}
+				},
+				error:function(){
+					console.log("Something went wrong on server!");
+				}
+			})
+		}
+		
+	});
+  	
+  	$(document).on('click','.comEdit',function(){
+		var comId=$(this).attr('id');
+		$("#exampleModal").modal("show");
+		$.ajax({
+			url:"../CompanyServlet",
+			type:"Post",
+			data:{"secret":"getDataById","id":comId},
+			dataType:"json",
+			success:function(response){
+				$("#comId").val(response.comId);
+				$("#comName").val(response.comName);
+				
+			},
+			error:function(){
+				console.log("Something went wrong on server!");
+			}
+		})
+	});
+  	
+  	$(document).ready(function(){
+		$("#Comform").on("submit",function(event){
+			event.preventDefault();
+			var formdata=$(this).serialize();
+			
+			$.ajax({
+				url:"../CompanyServlet",
+				type:"Post",
+				data:formdata,
+				success:function(response){
+					if(response.trim()=="Yes"){
+						$.toast({
+						    text: "Company Updated Successfully",     
+						    heading: 'Company', 
+						    icon: 'success', 
+						    showHideTransition: 'fade', 
+						    allowToastClose: true,
+						    hideAfter: 5000,    
+						    stack: 5, 
+						    position: 'top-center',     
+						    textAlign: 'left',  
+						    loader: true,  
+						    loaderBg: '#9EC600',   
+						});
+						getData();
+					}else{
+						$.toast({
+						    text: "Company Updated Failed",     
+						    heading: 'Company', 
+						    icon: 'error', 
+						    showHideTransition: 'fade', 
+						    allowToastClose: true,
+						    hideAfter: 5000,    
+						    stack: 5, 
+						    position: 'top-center',     
+						    textAlign: 'left',  
+						    loader: true,  
+						    loaderBg: '#9EC600',   
+						});
+
 					}
 					$("#exampleModal").modal("hide");
 				},
 				error:function(){
-					console.log("Something went wrong on Server!")
-				}
+					console.log("Something went wrong on server!")
+				},
 			})
 		})
-	</script>
-	
+	})
+  	
+  	
+  	</script>
+
 </body>
 
 </html>

@@ -19,4 +19,9 @@ public class Dbconnection {
 		return con;
 	}
 	
+	public static String Path() {
+		return "C:/Users/PC/eclipse-workspace/MegaMart/src/main/webapp/image";
+		
+	}
+	
 }
