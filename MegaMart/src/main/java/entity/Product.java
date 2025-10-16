@@ -14,4 +14,6 @@ public class Product {
 	private double price;
 	private int catId;
 	private int comId;
+	private String  catName;
+	private String  comName;
 }

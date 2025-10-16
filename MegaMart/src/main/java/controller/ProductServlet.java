@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import dao.ProductDao;
 import entity.Product;
@@ -84,6 +88,21 @@ public class ProductServlet extends HttpServlet {
 				pw.print("No");
 			}
 		    
+		}
+		else if(secret.equals("getAllProduct")) {
+			List<Product> listProduct=pd.getAllProduct();
+			Gson gson = new GsonBuilder().create();
+	        String json = gson.toJson(listProduct);
+	        pw.print(json);
+		}
+		else if(secret.equals("blockProduct")) {
+			int pId=Integer.parseInt(request.getParameter("id"));
+			int status=pd.blockProduct(pId);
+		    if (status>0) {
+				pw.print("Yes");
+			} else {
+				pw.print("No");
+			}
 		}
 		
 	}
