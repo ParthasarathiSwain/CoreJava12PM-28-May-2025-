@@ -104,6 +104,41 @@ public class ProductServlet extends HttpServlet {
 				pw.print("No");
 			}
 		}
+		else if(secret.equals("getProductDataById")) {
+			int pId=Integer.parseInt(request.getParameter("id"));
+			Product product=pd.getProductById(pId);
+			Gson gson = new GsonBuilder().create();
+	        String json = gson.toJson(product);
+	        pw.print(json);
+		}
+		else if(secret.equals("updateProduct")) {
+			int pId=Integer.parseInt(request.getParameter("pId"));
+			String  pName=request.getParameter("pName");
+			String  pDesc=request.getParameter("pDesc");
+			int qty=Integer.parseInt(request.getParameter("qty"));
+			double price=Double.parseDouble(request.getParameter("price"));
+			int catId=Integer.parseInt(request.getParameter("catId"));
+			int comId=Integer.parseInt(request.getParameter("comId"));
+			String  status=request.getParameter("status");
+			
+			 	Product product=new Product();
+			    product.setCatId(catId);
+			    product.setComId(comId);
+			    product.setPDesc(pDesc);
+			    product.setPName(pName);
+			    product.setQty(qty);
+			    product.setPrice(price);
+			    product.setPId(pId);
+			    product.setStatus(status);
+			    
+			    int res=pd.updateProduct(product);
+			    if (res>0) {
+					pw.print("Yes");
+				} else {
+					pw.print("No");
+				}
+			    
+		}
 		
 	}
 

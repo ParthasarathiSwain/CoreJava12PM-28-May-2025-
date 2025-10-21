@@ -54,6 +54,22 @@
               </ul>
             </li>
             
+             <li>
+              <a href="#" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-grid"></i>
+                </div>
+                <div class="menu-title">Customer</div>
+              </a>
+              <ul>
+                <li> 
+                	<a href="addCustomer.jsp"><i class="bi bi-arrow-right-short"></i>Add Customer</a>
+                </li>
+                <li> 
+                	<a href="viewCustomer.jsp"><i class="bi bi-arrow-right-short"></i>View Customer</a>
+                </li>
+                
+              </ul>
+            </li>
             
              <li>
               <a href="#" class="has-arrow">

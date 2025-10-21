@@ -1,3 +1,7 @@
+
+<%@ page import="java.sql.*"  %>
+<%@ page import="util.Dbconnection"  %>
+
 <!doctype html>
 <html lang="en" class="minimal-theme">
 
@@ -168,17 +172,59 @@
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Edit Company</h5>
+			        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
 			        <div class="container">
-			        	<form id="Comform">
-								<input class="form-control form-control-lg mb-3" type="text" name="comName" id="comName">
-								<input type="hidden" name="secret" value="updateCompany">
-								<input type="hidden" name="id" id="comId">
-								<input class="form-control btn btn-primary" type="submit" value="Edit & Save">
-							</form>
+			        	 <form  id="myForm">
+							 	<input type="text"   id="pName" name="pName" class="form-control form-control-lg mb-3"   aria-label=".form-control-lg example" required>
+								<input type="text"   id="pDesc" name="pDesc" class="form-control form-control-lg mb-3"    aria-label=".form-control-lg example" required>
+								<input type="number" id="qty" name="qty" class="form-control form-control-lg mb-3"    aria-label=".form-control-lg example" required>
+								<input type="number" id="price" name="price" class="form-control form-control-lg mb-3"  aria-label=".form-control-lg example" required>
+								
+								<select name="catId" id="catId"  class="form-control form-control-lg mb-3">
+									<option>--SELECT CATEGORY--</option>
+									<%
+									  Connection con1=Dbconnection.getCon();
+									  String query1="select catId,catName from category";
+									  PreparedStatement ps1= con1.prepareStatement(query1);
+									  ResultSet rs1=ps1.executeQuery();
+									  while(rs1.next()){
+									%>
+										<option  value="<%= rs1.getInt(1) %>"><%= rs1.getString(2) %></option>
+									<%
+									  }
+									%>
+								</select>
+								
+								<select name="comId"  id="comId"  class="form-control form-control-lg mb-3">
+									<option>--SELECT COMPANY--</option>
+									<%
+									  Connection con2=Dbconnection.getCon();
+									  String query2="select comId,comName from company";
+									  PreparedStatement ps2= con2.prepareStatement(query2);
+									  ResultSet rs2=ps2.executeQuery();
+									  while(rs2.next()){
+									%>
+										<option  value="<%= rs2.getInt(1) %>"><%= rs2.getString(2) %></option>
+									<%
+									  }
+									%>
+								</select>
+								
+								<label><b>Status</b></label>
+								<div class="mb-2" id="status">
+									<input type="radio" name="status" id="Active" value="Active">Active &nbsp;&nbsp;
+									<input type="radio" name="status" id="Pending" value="Pending">Pending &nbsp;&nbsp;
+									<input type="radio" name="status" id="Block" value="Block">Block
+								</div> 
+								
+								<input type="hidden" id="pId" name="pId">
+								<input type="hidden" value="updateProduct" name="secret">
+								<input class="form-control btn btn-primary" type="submit" value="Update Product">
+							 </form>
+
 			        </div>
 			      </div>
 			      
@@ -222,21 +268,21 @@
   	                        if(response[key].status=="Active"){
 								s+="<td><span class='badge bg-light-success text-success w-100'>Active</span></td>";
 								s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";
-		  	                    s+="<a  class='text-warning '  id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
+		  	                    s+="<a  class='text-primary editProduct'  id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
 		  	                    s+="<a  class='text-danger productDelete'   id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
 		  	                    s+="</div></td>";
   	                        }
   	                        if(response[key].status=="Pending"){
   	                        	s+="<td><span class='badge bg-light-warning text-warning w-100'>Pending</span></td>";
   	                        	s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";
-  	  	                        s+="<a  class='text-warning '  id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
+  	  	                        s+="<a  class='text-primary editProduct'  id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
   	  	                        s+="<a  class='text-danger productDelete'   id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
   	  	                        s+="</div></td>";
   	                        }
   	                        if(response[key].status=="Block"){
   	                        	s+="<td><span class='badge bg-light-danger text-danger w-100'>Block</span></td>";
   	                        	s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";
-  	  	                        s+="<a  class='text-warning '  id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
+  	  	                        s+="<a  class='text-primary editProduct'  id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
   	  	                        s+="<a  class='text-secondary '   data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
   	  	                        s+="</div></td>";
 	                        }
@@ -302,40 +348,45 @@
 		}
 		
 	});
-  	/*
-  	$(document).on('click','.comEdit',function(){
-		var comId=$(this).attr('id');
+  
+  	$(document).on('click','.editProduct',function(){
+		var pId=$(this).attr('id');
 		$("#exampleModal").modal("show");
 		$.ajax({
-			url:"../CompanyServlet",
+			url:"../ProductServlet",
 			type:"Post",
-			data:{"secret":"getDataById","id":comId},
+			data:{"secret":"getProductDataById","id":pId},
 			dataType:"json",
 			success:function(response){
+				$("#pName").val(response.pName);
+				$("#pDesc").val(response.pDesc); 
+				$("#qty").val(response.qty);
+				$("#price").val(response.price); 
+				$("#catId").val(response.catId);
 				$("#comId").val(response.comId);
-				$("#comName").val(response.comName);
-				
+				$("input[name='status'][value='" + response.status + "']").prop("checked", true);	
+				$("#pId").val(response.pId);
 			},
 			error:function(){
 				console.log("Something went wrong on server!");
 			}
 		})
 	});
-  	
+	
   	$(document).ready(function(){
-		$("#Comform").on("submit",function(event){
+		$("#myForm").on("submit",function(event){
 			event.preventDefault();
 			var formdata=$(this).serialize();
 			
 			$.ajax({
-				url:"../CompanyServlet",
+				url:"../ProductServlet",
 				type:"Post",
 				data:formdata,
 				success:function(response){
 					if(response.trim()=="Yes"){
 						$.toast({
-						    text: "Company Updated Successfully",     
-						    heading: 'Company', 
+						    text: "Product Updated Successfully",     
+						    heading: 'Product', 
 						    icon: 'success', 
 						    showHideTransition: 'fade', 
 						    allowToastClose: true,
@@ -349,8 +400,8 @@
 						getData();
 					}else{
 						$.toast({
-						    text: "Company Updated Failed",     
-						    heading: 'Company', 
+						    text: "Product Updated Failed",     
+						    heading: 'Product', 
 						    icon: 'error', 
 						    showHideTransition: 'fade', 
 						    allowToastClose: true,
@@ -372,7 +423,7 @@
 		})
 	})
   	
-  	 */
+  	 
   	</script>
 
 </body>
