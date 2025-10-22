@@ -88,6 +88,23 @@
               </ul>
             </li>
             
+             <li>
+              <a href="#" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-grid"></i>
+                </div>
+                <div class="menu-title">Admin</div>
+              </a>
+              <ul>
+                <li> 
+                	<a href="addAdmin.jsp"><i class="bi bi-arrow-right-short"></i>Add Admin</a>
+                </li>
+                <li> 
+                	<a href="viewAdmin.jsp"><i class="bi bi-arrow-right-short"></i>View Admin</a>
+                </li>
+                
+              </ul>
+            </li>
+            
             <li class="menu-label">Others</li>
            
             

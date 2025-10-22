@@ -28,13 +28,13 @@
           <main class="page-content">
             <!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Customer</div>
+					<div class="breadcrumb-title pe-3">Admin</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Add Customer</li>
+								<li class="breadcrumb-item active" aria-current="page">Add Admin</li>
 							</ol>
 						</nav>
 					</div>
@@ -54,7 +54,7 @@
 				<!--end breadcrumb-->
             	<div class="row">
 					<div class="col-xl-9 mx-auto">
-						<h6 class="mb-0 text-uppercase">Add Customer</h6>
+						<h6 class="mb-0 text-uppercase">Add Admin</h6>
 						<hr/>
 						<div class="card">
 							<div class="card-body">
@@ -72,9 +72,9 @@
 								
 								<input type="file" name="uImg" class="form-control form-control-lg mb-3"   aria-label=".form-control-lg example" required>
 								
-								<input type="hidden" name="secret" value="addCustomer">
+								<input type="hidden" name="secret" value="addAdmin">
 								
-								<input class="form-control btn btn-primary" type="submit" value="Add Customer">
+								<input class="form-control btn btn-primary" type="submit" value="Add Admin">
 							 </form>
 								
 							</div>
@@ -170,7 +170,7 @@
 			var formdata=new FormData(this);//collect form data
 			
 			$.ajax({
-				url : "../CustomerServlet",
+				url : "../AdminServlet",
 				type: "Post",
 				data: formdata,
 				contentType: false,
@@ -178,8 +178,8 @@
 				success:function(response){
 					if(response.trim()=="Yes"){
 						$.toast({
-						    text: "Customer Added Successfully!", 
-						    heading: 'Customer', 
+						    text: "Admin Added Successfully!", 
+						    heading: 'Admin', 
 						    icon: 'success', 
 						    showHideTransition: 'fade', 
 						    allowToastClose: true, 
@@ -193,8 +193,8 @@
 						
 					}else{
 						$.toast({
-						    text: "Customer Added Failed!", 
-						    heading: 'Customer', 
+						    text: "Admin Added Failed!", 
+						    heading: 'Admin', 
 						    icon: 'error', 
 						    showHideTransition: 'fade', 
 						    allowToastClose: true, 
