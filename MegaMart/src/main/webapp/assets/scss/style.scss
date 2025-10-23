@@ -1,0 +1,56 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Toyqo - Kids Store Bootstrap 5 Template
+    Version: 1.0
+
+-----------------------------------------------------------------------------------
+    
+    CSS INDEX
+    ===================
+	
+    01. Template default CSS
+    02. Component CSS
+        2.1 Button CSS
+        2.2 Breadcrumb CSS
+        2.3 Sidebar CSS
+        2.4 Feature CSS
+        2.5 Banner CSS
+        2.6 Products CSS
+        2.7 Single Product CSS
+        2.8 Testimonial CSS
+        2.9 Brand Logo CSS
+        2.10 Modal
+    03. Header CSS
+        3.1 Header Top CSS
+        3.2 Header Bottom CSS
+        3.3 Header Mobile CSS
+        3.4 Header Offcanvas CSS
+        3.5 Header Cart CSS
+    04. Hero CSS
+    05. Pages CSS
+        5.1 Blog Page CSS
+        5.2 Shop Page CSS
+        5.3 About Page CSS
+        5.4 Contact Page CSS5
+        5.5 My Account Page CSS
+        5.6 Login Register Page CSS
+        5.7 Error 404 Page CSS5
+        5.8 Faq Page CSS
+        5.9 Wishlist Page CSS
+        5.10 Cart Page CSS
+        5.11 Checkout Page CSS
+        5.12 Compare Page CSS
+    06. Footer CSS
+
+-----------------------------------------------------------------------------------*/
+@import "./bootstrap/functions";
+@import "variabls";
+@import "custom-variables";
+@import "./bootstrap/bootstrap";
+
+@import "common";
+@import "component";
+@import "header";
+@import "hero";
+@import "pages";
+@import "footer";

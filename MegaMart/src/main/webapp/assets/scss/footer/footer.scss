@@ -1,0 +1,136 @@
+/*----------------------------------------*/
+/*  06. Footer CSS
+/*----------------------------------------*/
+.single-footer-widget {
+
+    & .widget-title {
+        font-size: 20px;
+        color: $white;
+        margin-bottom: 25px;
+        font-weight: 500;
+    }
+
+    & .desc-content {
+        color: $white;
+        margin-bottom: 25px;
+    }
+
+    & .widget-social {
+        & a {
+            font-size: 15px;
+            height: 35px;
+            width: 35px;
+            color: $primary;
+            background-color: $white;
+            border: 1px solid $white;
+            margin-right: 5px;
+            text-align: center;
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 10px;
+
+            &:hover {
+                background-color: $body-color;
+                color: $white;
+                border-color: $body-color;
+            }
+        }
+    }
+
+    & .contact-links {
+        margin-bottom: 0px;
+        & li {
+            color: $white;
+            font-weight: 400;
+
+            & a {
+                color: $white;
+                font-weight: 400;
+
+                &:hover {
+                    color: $body-color;
+                }
+            }
+
+            & i {
+                font-size: 18px;
+                color: $white;
+                font-weight: 400;
+            }
+        }
+    }
+
+    & .widget-list {
+        & li {
+            margin-bottom: 8px;
+            & a {
+                color: $white;
+                &:hover {
+                    color: $body-color;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    & .newsletter-form-wrap {
+        & .mc-form {
+            position: relative;
+            & .form-control {
+                border: 1px solid $white;
+                background: transparent;
+                border-radius: 0px;
+                font-size: 12px;
+                color: $white;
+                height: 40px;
+                padding: 0 80px 0 10px;
+
+                &::placeholder {
+                    color: $white;
+                }
+            }
+
+            & .newsletter-btn {
+                position: absolute;
+                right: 0;
+                background: transparent;
+                border: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $white;
+                font-weight: 600;
+                padding-left: 0;
+                padding-right: 10px;
+
+                &:focus {
+                    border: 0px;
+                    outline: 0;
+
+                    &:active{
+                        border: 0px;
+                    }
+                }
+                
+                &:hover {
+                    color: $body-color;
+                }
+            }
+        }
+    }
+
+}
+
+.copyright-content {
+    & p {
+        color: $white;
+        font-size: 15px;
+
+        & a {
+            &:hover {
+                color: $body-color;
+            }
+        }
+    }
+}

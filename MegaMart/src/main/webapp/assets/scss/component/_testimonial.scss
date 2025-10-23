@@ -1,0 +1,76 @@
+/*====================
+    2.8 Testimonial CSS
+====================*/
+.testimonial-bg{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url(../images/bg/bg-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    @media #{$large-mobile} {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+.testimonial-content {
+    width: 910px;
+    margin: 40px auto 0;
+
+    @media #{$desktop-device} {
+        width: 810px;
+    }
+    @media #{$tablet-device} {
+        width: 650px;
+    }
+    @media #{$large-mobile} {
+        width: 500px;
+    }
+    @media #{$small-mobile} {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    & p {
+        color: $white;
+    }
+
+    & .ratings {
+        & .rating-wrap {
+            & .star {
+                color: $white;
+            }
+        }
+    }
+
+    & .testimonial-author {
+        color: $white;
+        font-size: 17px;
+        font-weight: 700;
+    }
+}
+.testimonial-carousel {
+    & .testimonial-gallery-thumbs{
+        width: 290px;
+        margin: 0 auto;
+
+        @media #{$small-mobile} {
+            width: 250px;
+        }
+
+        & img {
+            width: 100%;
+            transform: scale(0.7);
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        & .swiper-slide-active {
+            & img {
+                transform: scale(1);
+                transition: .3s;
+            }
+        }
+    }
+}

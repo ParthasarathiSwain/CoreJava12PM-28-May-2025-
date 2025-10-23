@@ -1,0 +1,58 @@
+/*====================
+    2.5 Banner CSS
+====================*/
+.banner {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+    & img {
+        width: 100%;
+        transition: $transition-base;
+    }
+    &:hover {
+        & img {
+            transform: scale(1.1);
+            opacity: .6;
+        }
+    }
+}
+.single-product-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    & .banner-img {
+        width: 100%;
+        & img {
+            width: 100%;
+            transition: $transition-base;
+        }
+    }
+    
+    &:hover {
+        & img {
+            transform: rotate(5deg);
+            opacity: .5;
+        }
+    }
+
+    & .single-banner-content {
+        & .title {
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: 10px;
+            margin-bottom: 0px;
+
+            & a {
+                color: $dark;
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}

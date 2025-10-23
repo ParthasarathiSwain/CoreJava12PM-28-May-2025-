@@ -1,0 +1,228 @@
+/*====================  
+    2.3 Sidebar CSS 
+====================*/
+/*-- Shop Sidebar Area Start --*/
+.sidebar_widget{
+    & .widget_inner{
+        & .widget-title{
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1;
+            position: relative;
+            padding-bottom: 10px;
+            &:after{
+                background-color: #ebebeb;
+                position: absolute;
+                content: "";
+                left: 0;
+                bottom: 0;
+                height: 1px;
+                width: 100%;
+            }
+        }
+        & .search-box{
+            display: flex;
+            flex-wrap: wrap;
+            .form-control{
+                border: 1px solid #e1e1e1;
+                padding: 10px;
+                transition: .3s;
+                display: block;
+                border-radius: 0;
+                height: 50px;
+                font-size: 12px;
+                width: calc(100% - 50px);
+                &:focus{
+                    border-color: $primary;
+                    box-shadow: none;
+                }
+            }
+            .btn {
+                border-radius: 0;
+                color: $white;
+                height: 50px;
+                width: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0px;
+                font-size: 20px;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+        & .widget-list{
+            & .category-menu{
+                overflow: inherit;
+                > li{
+                    line-height: 1;
+                    > a{
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        i {
+                            transition: .3s;
+                        }
+                        &:hover{
+                            color: $primary;
+                        }
+                    }
+                    &.active {
+                        > a{
+                            i{
+                                transform: rotate(180deg);
+                                transition: .3s;
+                            }
+                        }
+                    }
+
+                    & > .dropdown {
+                        padding-left: 10px;
+                        & li {
+                            & a {
+                                font-size: 13px;
+                                font-weight: 400;
+                                padding-top: 15px;
+                                display: block;
+
+                                &:hover {
+                                    color: $primary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & .sidebar-body{
+                & .tags{
+                    li{
+                        display: inline-block;
+                    }
+                }
+                & .checkbox-container{
+                    li{
+                        padding: 10px 0;
+                        line-height: 1;
+
+                        &:last-child {
+                            padding-bottom: 0px;
+                        }
+                    }
+                    .custom-control-input{
+                        margin-right: 10px;
+                        cursor: pointer;
+                    }
+                    .custom-control-label{
+                        color: $dark;
+                        text-transform: capitalize;
+                        cursor: pointer;
+                        transition: $transition-base;
+
+                        &:hover {
+                            color: $primary;
+                            transition: $transition-base;
+                        }
+                    }
+                }
+            }
+            & .single-product-list {
+                & .product-list-content{
+                    & .product-name {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    
+    & .blog-list-wrapper {
+        & .single-blog-list {
+            display: flex;
+            flex-wrap: wrap;
+
+            & .blog-thumb {
+                width: 70px;
+                border: 1px solid $primary;
+                height: 100%;
+            }
+
+            & .blog-list-content {
+                width: calc(100% - 70px);
+                padding-left: 10px;
+
+                & .blog-name {
+                    font-size: 15px;
+                    font-weight: 400;
+                    & a {
+                        color: $dark;
+                        &:hover {
+                            color: $primary;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                & .blog-meta {
+                    & p {
+                        color: $body-color;
+                        font-size: 14px;
+                    }
+                }
+            }
+        } 
+    }
+}
+.sidebar-list{
+    > li{
+        > a{
+            position: relative;
+            display: block;
+            padding: 5px 0;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+        &:last-child{
+            a{
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+.sidebar-body-archive {
+    & .title {
+        font-size: 14px;
+        font-weight: 700;
+        color: $body-color;
+    }
+
+    & .archive-list {
+        padding-left: 10px;
+        & li {
+            list-style: inherit;
+            margin-top: 10px;
+            & a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+.tags {
+    & li {
+        & a {
+            border: 1px solid #ccc;
+            padding: 6px 15px 4px;
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            color: $dark;
+            &:hover{
+                color: $white;
+                background: $secondary;
+                border-color: $secondary;
+            }
+        }
+    }
+}

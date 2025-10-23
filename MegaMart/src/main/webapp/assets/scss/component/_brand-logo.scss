@@ -1,0 +1,30 @@
+/*====================
+    2.9 Brand Logo CSS
+====================*/
+.single-brand-logo {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    & a {
+        position: relative;
+
+        & img {
+            transform: scale(.9);
+            transition: $transition-base;
+            width: 100%;
+        }
+
+        &:hover {
+
+            & img {
+                transform: scale(1);
+                transition: $transition-base;
+            }
+        }
+    }
+}
+.brand-logo-carousel {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}

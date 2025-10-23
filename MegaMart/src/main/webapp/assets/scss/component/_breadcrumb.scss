@@ -1,0 +1,46 @@
+/*====================  
+    2.2 Breadcrumb CSS 
+====================*/
+.breadcrumb-area {
+    padding: 25px 0;
+    @media #{$large-mobile} {
+        padding: 20px 0;
+    }
+}
+.breadcrumb-content {
+    & ul {
+        & li {
+            display: inline-block;
+            margin: 0 18px 0 0;
+            text-transform: capitalize;
+            color: #f9f9f9;
+            position: relative;
+            letter-spacing: .8px;
+            &:last-child {
+                margin: 0;
+            }
+            &::before {
+                position: absolute;
+                width: 13px;
+                height: 1px;
+                background-color: $white;
+                content: "";
+                right: -18px;
+                top: 13px;
+                z-index: 1;
+                transform: rotate(106deg);
+            }
+            &:last-child::before {
+                display: none;
+            }
+            & a {
+                text-transform: capitalize;
+                color: $white;
+                font-weight: 500;
+                &:hover {
+                    color: $secondary;
+                }
+            }
+        }
+    }
+}

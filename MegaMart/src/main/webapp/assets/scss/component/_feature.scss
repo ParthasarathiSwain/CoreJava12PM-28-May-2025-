@@ -1,0 +1,37 @@
+/*====================
+    2.4 Feature CSS
+====================*/
+.feature-wrap {
+    border-bottom: 1px solid #D8D8D8;
+}
+
+.feature {
+    display: flex;
+    flex-wrap: wrap;
+    & .icon {
+        line-height: 1;
+
+        width: 48px;
+        & i {
+            font-size: 24px;
+            line-height: 1;
+        }
+    }
+    & .content {
+        width: calc(100% - 48px);
+        & .title {
+            font-size: 18px;
+            font-weight: 600;
+
+            margin-bottom: 6px;
+
+            color: #222222;
+        }
+        & p {
+            font-size: 14px;
+            line-height: 1.25;
+
+            color: #999999;
+        }
+    }
+}
