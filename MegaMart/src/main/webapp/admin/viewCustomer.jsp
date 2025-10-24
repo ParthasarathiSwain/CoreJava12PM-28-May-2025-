@@ -182,6 +182,11 @@
 								<input type="number" id="uPhone"  name="uPhone" 	class="form-control form-control-lg mb-3"   aria-label=".form-control-lg example" >
 								
 								<input type="text" 	id="uAdd"     name="uAdd" 	class="form-control form-control-lg mb-3"   aria-label=".form-control-lg example" >
+								<label><b>Status</b></label>
+								<div class="mb-2" id="status">
+									<input type="radio" name="status" id="Active" value="Active">Active &nbsp;&nbsp;
+									<input type="radio" name="status" id="Block" value="Block">Block
+								</div> 
 								
 								<input type="hidden" id="uId" name="uId">
 								<input type="hidden" value="updateCustomer" name="secret">
@@ -217,7 +222,7 @@
  							s+="<td>"+response[key].uId+"</td>";
  							
    							s+="<td> <div class='d-flex align-items-center gap-3 cursor-pointer'> ";
-							s+="<img src='../image/userImg/"+response[key].uImg+"' class='user-img-2' width='44' height='44' alt=''>";
+							s+="<img src='../image/userImg/"+response[key].uImg+"' class='rounded-circle' width='44' height='44' alt=''>";
    	                        s+="<div class=''><p class='mb-0'>"+response[key].uName+"</p></div> </div> </div> </td>";
   	                        s+="<td>"+response[key].uEmail+"</td>";
   	                        s+="<td>"+response[key].uPass+"</td>";
@@ -233,17 +238,11 @@
   	 	                        s+="<a  class='text-danger deleteCustomer' id='"+response[key].uId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
   	 	                        s+="</div></td>";
   	                        }
-  	                        if(response[key].status=="Pending"){
-  	                        	s+="<td><span class='badge bg-light-warning text-warning w-100'>Pending</span></td>";
-  	                        	s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";
-  	   	                        s+="<a  class='text-primary editCustomer' id='"+response[key].uId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
-  	 	                        s+="<a  class='text-danger deleteCustomer' id='"+response[key].uId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
-  	 	                        s+="</div></td>";
-  	                        }
+  	                        
   	                        if(response[key].status=="Block"){
   	                        	s+="<td><span class='badge bg-light-danger text-danger w-100'>Block</span></td>";
   	                        	s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";
-  	   	                        s+="<a  class='text-primary editCustomer' id='"+response[key].pId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
+  	   	                        s+="<a  class='text-primary editCustomer' id='"+response[key].uId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
   	 	                        s+="<a  class='text-secondary'  data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
   	 	                        s+="</div></td>";
   	                        }
@@ -326,6 +325,8 @@
  				$("#uPhone").val(response.uPhone);
  				$("#uAdd").val(response.uAdd);
  				$("#uId").val(response.uId);
+				$("input[name='status'][value='" + response.status + "']").prop("checked", true);	
+
  			},
  			error:function(){
 				console.log("Something went wrong on server!");

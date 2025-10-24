@@ -105,14 +105,15 @@ public class CustomerDao {
 		int res=0;
 		try {
 			Connection con=Dbconnection.getCon();
-			String query="update user set uName=?,uEmail=?,uPass=?,uAdd=?,uPhone=? where uId=?";
+			String query="update user set uName=?,uEmail=?,uPass=?,uAdd=?,uPhone=?,status=? where uId=?";
 			PreparedStatement ps=con.prepareStatement(query);
 			ps.setString(1, user.getUName());
 			ps.setString(2, user.getUEmail());
 			ps.setString(3, user.getUPass());
 			ps.setString(4, user.getUAdd());
 			ps.setString(5, user.getUPhone());
-			ps.setInt(6, user.getUId());
+			ps.setString(6, user.getStatus());
+			ps.setInt(7, user.getUId());
 			res=ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

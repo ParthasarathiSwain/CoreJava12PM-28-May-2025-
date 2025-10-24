@@ -48,17 +48,17 @@
                         <!-- Login Title & Content End -->
 
                         <!-- Form Action Start -->
-                        <form action="#" method="post">
+                        <form id="myForm">
 
                             <!-- Input Email Start -->
                             <div class="single-input-item mb-3">
-                                <input type="email" placeholder="Email or Username">
+                                <input type="email" name="uEmail" placeholder="Email or Username" required>
                             </div>
                             <!-- Input Email End -->
 
                             <!-- Input Password Start -->
                             <div class="single-input-item mb-3">
-                                <input type="password" placeholder="Enter your Password">
+                                <input type="password" name="uPass" placeholder="Enter your Password" required>
                             </div>
                             <!-- Input Password End -->
 
@@ -84,7 +84,7 @@
 
                             <!-- Lost Password & Creat New Account Start -->
                             <div class="lost-password">
-                                <a href="register.html">Creat Account</a>
+                                <a href="register.html">Create Account</a>
                             </div>
                             <!-- Lost Password & Creat New Account End -->
 
@@ -104,6 +104,67 @@
    <%@ include file="custInclude/mobile.jsp" %>
 
     <%@ include file="custInclude/script.jsp" %>
+    <script>
+	$(document).ready(function(){
+		$("#myForm").on("submit",function(event){
+			event.preventDefault();//stop default form submit
+			var formdata=$(this).serialize();//collect form data
+			
+			$.ajax({
+				url : "LoginServlet",
+				type: "Post",
+				data: formdata,
+				success:function(response){
+					if(response.trim()==="Customer"){
+						alert("Login Successfull!");
+						window.location.href="index.jsp";
+					}
+					else if(response.trim()==="Admin"){
+						alert("Login Successfull!");
+						window.location.href="admin/index.jsp";
+					}
+					else if(response.trim()==="NotActive"){
+							$.toast({
+							    text: "User Not Active!", 
+							    heading: 'User', 
+							    icon: 'warning', 
+							    showHideTransition: 'fade', 
+							    allowToastClose: true, 
+							    hideAfter: 5000, 
+							    stack: 5, 
+							    position: 'top-center',     
+							    textAlign: 'left', 
+							    loader: true, 
+							    loaderBg: '#9EC600',     
+							});
+					
+					}
+					else{
+						$.toast({
+						    text: "Login Failed!", 
+						    heading: 'User', 
+						    icon: 'error', 
+						    showHideTransition: 'fade', 
+						    allowToastClose: true, 
+						    hideAfter: 5000, 
+						    stack: 5, 
+						    position: 'top-center',     
+						    textAlign: 'left', 
+						    loader: true, 
+						    loaderBg: '#9EC600',     
+						});
+					}
+					$("#myForm")[0].reset();
+				},
+				error:function(){
+					console.log("Something went wrong on Server!")
+				}
+			})
+		})
+			
+	})
+	</script>
+    
 </body>
 
 </html>

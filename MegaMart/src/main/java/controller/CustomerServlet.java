@@ -120,7 +120,7 @@ public class CustomerServlet extends HttpServlet {
 				String uPass=request.getParameter("uPass");
 				String uPhone=request.getParameter("uPhone");
 				String uAdd=request.getParameter("uAdd");
-				
+				String status=request.getParameter("status");
 				User user=new User();
 			    user.setUName(uName);
 			    user.setUEmail(uEmail);
@@ -128,6 +128,7 @@ public class CustomerServlet extends HttpServlet {
 			    user.setUAdd(uAdd);
 			    user.setUPhone(uPhone);
 			    user.setUId(uId);
+			    user.setStatus(status);
 			    
 			    int res=cd.updateCustomer(user);
 			    if(res>0) {

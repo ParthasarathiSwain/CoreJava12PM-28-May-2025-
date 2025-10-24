@@ -217,7 +217,7 @@
  							s+="<td>"+response[key].uId+"</td>";
  							
    							s+="<td> <div class='d-flex align-items-center gap-3 cursor-pointer'> ";
-							s+="<img src='../image/userImg/"+response[key].uImg+"' class='user-img-2' width='44' height='44' alt=''>";
+							s+="<img src='../image/userImg/"+response[key].uImg+"' class='rounded-circle' width='44' height='44' alt=''>";
    	                        s+="<div class=''><p class='mb-0'>"+response[key].uName+"</p></div> </div> </div> </td>";
   	                        s+="<td>"+response[key].uEmail+"</td>";
   	                        s+="<td>"+response[key].uPass+"</td>";
@@ -233,13 +233,7 @@
   	 	                        s+="<a  class='text-danger deleteAdmin' id='"+response[key].uId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
   	 	                        s+="</div></td>";
   	                        }
-  	                        if(response[key].status=="Pending"){
-  	                        	s+="<td><span class='badge bg-light-warning text-warning w-100'>Pending</span></td>";
-  	                        	s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";
-  	   	                        s+="<a  class='text-primary editAdmin' id='"+response[key].uId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Edit'><i class='bi bi-pencil-fill'></i></a>";
-  	 	                        s+="<a  class='text-danger deleteAdmin' id='"+response[key].uId+"' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Delete'><i class='bi bi-trash-fill'></i></a>";
-  	 	                        s+="</div></td>";
-  	                        }
+  	                        
   	                        if(response[key].status=="Block"){
   	                        	s+="<td><span class='badge bg-light-danger text-danger w-100'>Block</span></td>";
   	                        	s+="<td><div class='table-actions d-flex align-items-center gap-3 fs-6'>";

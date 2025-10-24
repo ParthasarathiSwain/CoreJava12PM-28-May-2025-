@@ -82,6 +82,12 @@
                         <!-- Header Action Start -->
                         <div class="col-md-6 col-lg-3 col-xl-4 col-6 justify-content-end">
                             <div class="header-actions">
+                                <%
+                                    String uImg=(String)session.getAttribute("uImg");
+                               		String uName=(String)session.getAttribute("uName");
+                                	if( uName=="" || uName==null){    
+                                		
+                                %>
                                 
                                 <a href="login.jsp">login</a>
                                 <b>|</b>
@@ -91,6 +97,17 @@
                                     <a href="javascript:void(0)" class="header-action-btn"><i class="pe-7s-user"></i></a>
                                    
                                 </div>
+                                <%
+                                	}
+                                	else{
+                                %>
+                                   <p class="text-info">Welcome &nbsp;<%= uName %></p>
+                                   <img alt="" src="image/userImg/<%=uImg %>"  style="width:30px;height:30px;border-radius:50%;object-fit:cover;!important">
+                                   <a href="logout.jsp" class="text-danger"><b>logout</b></a>
+                                   
+                                <%
+                                	}
+                                %>
                                 
                                 <a href="javascript:void(0)" class="header-action-btn header-action-btn-cart">
                                     <i class="pe-7s-cart"></i>
